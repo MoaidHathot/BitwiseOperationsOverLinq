@@ -1,0 +1,17 @@
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe.config
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.pdb
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.dll
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.xml
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.csprojResolveAssemblyReference.cache
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.exe
+S:\Programming\C#\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.pdb
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe.config
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.exe
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.pdb
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.pdb
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.dll
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.xml
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.csprojResolveAssemblyReference.cache
+S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\Messages.xml

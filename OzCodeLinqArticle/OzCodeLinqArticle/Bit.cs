@@ -42,7 +42,7 @@ namespace OzCodeLinqArticle
         public static string[] GetNames() => Names;
         public static Bit[] GetValues() => Values;
 
-        public override string ToString() => _name;
+        public override string ToString() => _value.ToString();
         public override int GetHashCode() => _value;
 
         public override bool Equals(object obj) => Equals(obj as Bit);

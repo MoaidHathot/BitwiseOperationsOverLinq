@@ -1,9 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?> 
 <configuration>
-    <startup> 
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
-    </startup>
-<Protocol>
+  <Protocol>
     <Layout>
       <LayoutElement Index="00" BitCount="1" Name="WaitingAck" />
       <LayoutElement Index="01" BitCount="4" Name="TargetId" />
@@ -16,7 +13,7 @@
       <Message Name="Initialize"
                WaitingAck="0"
                TargetId="1"
-               ActionId="1"
+               ActionId="2"
                Headers="10"
                Content="0xff" />
     </Messages>

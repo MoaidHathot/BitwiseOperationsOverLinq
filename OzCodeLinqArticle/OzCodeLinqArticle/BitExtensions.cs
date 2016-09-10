@@ -7,7 +7,7 @@ namespace OzCodeLinqArticle
 {
     public static class BitExtensions
     {
-        public static IEnumerable<Bit> AsEnumerableBits(this byte @byte)
+        public static IEnumerable<Bit> ToBits(this byte @byte)
         {
             for (var index = 0; index < 8; ++index, @byte >>= 1)
             {
@@ -15,9 +15,7 @@ namespace OzCodeLinqArticle
             }
         }
 
-        public static IEnumerable<Bit> AsEnumerableBits(this byte[] bytes) => bytes.SelectMany(@byte => @byte.AsEnumerableBits());
-
-        //public static IEnumerable<Bit> Take(this IEnumerable<Bit> bits, int bitCount) => bits.Take(bitCount);
+        public static IEnumerable<Bit> ToBits(this byte[] bytes) => bytes.SelectMany(@byte => @byte.ToBits());
 
         public static IEnumerable<Bit> PadToFit(this IEnumerable<Bit> bits, Bit bitPadValue, int bitCount) => bits.Concat(Enumerable.Repeat(bitPadValue, bitCount)).Take(bitCount);
 
@@ -40,7 +38,7 @@ namespace OzCodeLinqArticle
             return bytes;
         }
 
-        public static byte[] ToByteArray(this string value) => value.IsHexNumber() ? value.HexToByteArray() : value.DecimalToByteArray();
+        public static byte[] ToByteArray(this string value) => value.IsHexNumber() ? value.HexToByteArray() : value.IntegerToByteArray();
         //{
         //    //var value = properties[item.Name];
 
@@ -51,7 +49,7 @@ namespace OzCodeLinqArticle
 
         //    try
         //    {
-        //        return value.IsHexNumber() ? value.HexToByteArray() : value.DecimalToByteArray();
+        //        return value.IsHexNumber() ? value.HexToByteArray() : value.IntegerToByteArray();
         //    }
         //    catch (FormatException ex)
         //    {

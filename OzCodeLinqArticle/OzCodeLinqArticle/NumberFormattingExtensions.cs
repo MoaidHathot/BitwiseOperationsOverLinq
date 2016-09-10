@@ -6,7 +6,7 @@ namespace OzCodeLinqArticle
     {
         public static string ToHexNumber(this byte[] bytes) => BitConverter.ToString(bytes).Replace("-", "");
 
-        public static byte[] DecimalToByteArray(this string number)
+        public static byte[] IntegerToByteArray(this string number)
         {
             return BitConverter.GetBytes(ulong.Parse(number));
         }
@@ -22,6 +22,16 @@ namespace OzCodeLinqArticle
             var integerValue = ulong.Parse(hex.Substring(2), System.Globalization.NumberStyles.HexNumber);
 
             return BitConverter.GetBytes(integerValue);
+        }
+
+        public static byte[] ToByteArray(this int number)
+        {
+            return BitConverter.GetBytes(number);
+        }
+
+        public static int ToInt(this byte[] bytes)
+        {
+            return BitConverter.ToInt32(bytes, 0);
         }
 
         public static bool IsHexNumber(this string number)
