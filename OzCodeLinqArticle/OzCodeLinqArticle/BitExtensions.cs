@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using MoreLinq;
 
 namespace OzCodeLinqArticle
 {
@@ -36,6 +38,30 @@ namespace OzCodeLinqArticle
             bitsArray.CopyTo(bytes, 0);
 
             return bytes;
+        }
+
+        public static byte ToByte(this IEnumerable<Bit> bits)
+        {
+            if (8 < bits.Count())
+            {
+                throw new ArgumentOutOfRangeException(nameof(bits));
+            }
+
+
+            int result = 0;
+
+            int index = 0;
+            foreach (var bit in bits)
+            {
+                result = result | (byte)(bit << index++);
+            }
+
+            return (byte)result;
+        }
+
+        public static IEnumerable<byte> ToBytes(this IEnumerable<IEnumerable<Bit>> bits)
+        {
+            return bits.Select(b => b.ToByte());
         }
 
         public static byte[] ToByteArray(this string value) => value.IsHexNumber() ? value.HexToByteArray() : value.IntegerToByteArray();

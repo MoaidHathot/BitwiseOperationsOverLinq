@@ -23,25 +23,38 @@ namespace OzCodeLinqArticle
 
 
 
-            var result = _layoutItems
-                .Select(item => new LayoutItemValue<string>(map[item.Name], item.BitCount))
-                .Select(
-                    item => new LayoutItemValue<int>(item.Value.IsHexNumber() ? int.Parse(item.Value.Substring(2), NumberStyles.HexNumber) : int.Parse(item.Value), item.BitCount))
-                .Select(item => new LayoutItemValue<byte[]>(BitConverter.GetBytes(item.Value), item.BitCount))
-                .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.ToBits(), item.BitCount))
-                .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.Take(item.BitCount), item.BitCount));
+            //var result = _layoutItems
+            //    .Select(item => new LayoutItemValue<string>(map[item.Name], item.BitCount))
+            //    .Select(
+            //        item => new LayoutItemValue<int>(item.Value.IsHexNumber() ? int.Parse(item.Value.Substring(2), NumberStyles.HexNumber) : int.Parse(item.Value), item.BitCount))
+            //    .Select(item => new LayoutItemValue<byte[]>(BitConverter.GetBytes(item.Value), item.BitCount))
+            //    .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.ToBits(), item.BitCount))
+            //    .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.Take(item.BitCount), item.BitCount));
 
 
+            //Bug: Remove pad before batch, the length is not dividable by 8.
 
 
             //throw new NotImplementedException();
-            return _layoutItems
+
+            foreach (var item in _layoutItems)
+            {
+                map[item.Name].ToByteArray().ToBits().Pad(item.BitCount, Bit.Off).Take(item.BitCount);
+            }
+
+            var result = _layoutItems
                 .SelectMany(item => map[item.Name]
                     .ToByteArray()
                     .ToBits()
                     .Pad(item.BitCount, Bit.Off)
                     .Take(item.BitCount))
-                .ToByteArray();
+                .Pad(32, Bit.Off)
+                .Batch(8)
+                .ToBytes();
+                //.Select(b => b.ToByte());
+
+            result.ToArray();
+            throw new NotImplementedException();
         }
 
         public class LayoutItemValue<T>
