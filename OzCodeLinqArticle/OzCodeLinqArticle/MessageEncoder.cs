@@ -49,30 +49,9 @@ namespace OzCodeLinqArticle
                 .Batch(8)
                 .ToBytes();
                 //.ToArray();
-                //.ToBytes();
-
-            //var bits = _layoutItems
-            //    .SelectMany(Item => valueMap[Item.Name]
-            //        .ToByteArray()
-            //        .ToBits()
-            //        .Take(Item.BitCount))
-            //    .Pad(32, Bit.Off)
-            //    .Batch(8)
-            //    .Select(b => b.ToByte());
 
 
-            var result = _layoutItems
-                .SelectMany(item => valueMap[item.Name]
-                    .ToByteArray()
-                    .ToBits()
-                    .Pad(item.BitCount, Bit.Off)
-                    .Take(item.BitCount))
-                .Pad(32, Bit.Off)
-                .Batch(8)
-                .ToBytes();
-            //.Select(b => b.ToByte());
-
-            result.ToArray();
+            //bits.ToArray();
             throw new NotImplementedException();
         }
 
