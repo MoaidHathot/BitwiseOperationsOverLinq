@@ -66,7 +66,7 @@ namespace OzCodeLinqArticle
 
         public static byte[] ToByteArray(this string value) => value.IsHexNumber() ? value.HexToByteArray() : value.IntegerToByteArray();
         //{
-        //    //var value = properties[item.Name];
+        //    //var value = properties[Item.Name];
 
         //    if (string.IsNullOrWhiteSpace(value))
         //    {

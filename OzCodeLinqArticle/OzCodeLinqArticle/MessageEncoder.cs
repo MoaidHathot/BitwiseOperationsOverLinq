@@ -19,31 +19,50 @@ namespace OzCodeLinqArticle
 
         public byte[] Encode(IEnumerable<KeyValuePair<string, string>> message)
         {
-            var map = message.ToDictionary(pair => pair.Key, pair => pair.Value);
+            var valueMap = message.ToDictionary(pair => pair.Key, pair => pair.Value);
 
 
 
             //var result = _layoutItems
-            //    .Select(item => new LayoutItemValue<string>(map[item.Name], item.BitCount))
+            //    .Select(Item => new LayoutItemValue<string>(map[Item.Name], Item.BitCount))
             //    .Select(
-            //        item => new LayoutItemValue<int>(item.Value.IsHexNumber() ? int.Parse(item.Value.Substring(2), NumberStyles.HexNumber) : int.Parse(item.Value), item.BitCount))
-            //    .Select(item => new LayoutItemValue<byte[]>(BitConverter.GetBytes(item.Value), item.BitCount))
-            //    .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.ToBits(), item.BitCount))
-            //    .Select(item => new LayoutItemValue<IEnumerable<Bit>>(item.Value.Take(item.BitCount), item.BitCount));
+            //        Item => new LayoutItemValue<int>(Item.Value.IsHexNumber() ? int.Parse(Item.Value.Substring(2), NumberStyles.HexNumber) : int.Parse(Item.Value), Item.BitCount))
+            //    .Select(Item => new LayoutItemValue<byte[]>(BitConverter.GetBytes(Item.Value), Item.BitCount))
+            //    .Select(Item => new LayoutItemValue<IEnumerable<Bit>>(Item.Value.ToBits(), Item.BitCount))
+            //    .Select(Item => new LayoutItemValue<IEnumerable<Bit>>(Item.Value.Take(Item.BitCount), Item.BitCount));
 
 
             //Bug: Remove pad before batch, the length is not dividable by 8.
 
 
-            //throw new NotImplementedException();
-
             foreach (var item in _layoutItems)
             {
-                map[item.Name].ToByteArray().ToBits().Pad(item.BitCount, Bit.Off).Take(item.BitCount);
+                valueMap[item.Name].ToByteArray().ToBits().Pad(item.BitCount, Bit.Off).Take(item.BitCount);
             }
 
+            var bits = _layoutItems.Select(item => new {Item = item, value = valueMap[item.Name]})
+                .SelectMany(pair => pair.value
+                    .ToByteArray()
+                    .ToBits()
+                    .Take(pair.Item.BitCount))
+                .Pad(32, Bit.Off)
+                .Batch(8)
+                .ToBytes();
+                //.ToArray();
+                //.ToBytes();
+
+            //var bits = _layoutItems
+            //    .SelectMany(Item => valueMap[Item.Name]
+            //        .ToByteArray()
+            //        .ToBits()
+            //        .Take(Item.BitCount))
+            //    .Pad(32, Bit.Off)
+            //    .Batch(8)
+            //    .Select(b => b.ToByte());
+
+
             var result = _layoutItems
-                .SelectMany(item => map[item.Name]
+                .SelectMany(item => valueMap[item.Name]
                     .ToByteArray()
                     .ToBits()
                     .Pad(item.BitCount, Bit.Off)
@@ -51,7 +70,7 @@ namespace OzCodeLinqArticle
                 .Pad(32, Bit.Off)
                 .Batch(8)
                 .ToBytes();
-                //.Select(b => b.ToByte());
+            //.Select(b => b.ToByte());
 
             result.ToArray();
             throw new NotImplementedException();
@@ -69,7 +88,7 @@ namespace OzCodeLinqArticle
             }
 
             public override string ToString() => $"Value: {Value}, Bitcount: {BitCount}";
-    }
+        }
 
         public IEnumerable<KeyValuePair<string, int>> Decode(byte[] bytes)
         {

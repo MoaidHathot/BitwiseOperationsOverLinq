@@ -14,3 +14,12 @@ S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\
 S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.dll
 S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.xml
 S:\Programming\GitHub\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\Messages.xml
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe.config
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.exe
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.pdb
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\Messages.xml
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.exe
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\OzCodeLinqArticle.pdb
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.dll
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\bin\Debug\MoreLinq.xml
+E:\Programming\Github\OzCodeLinqArticle\OzCodeLinqArticle\OzCodeLinqArticle\obj\Debug\OzCodeLinqArticle.csprojResolveAssemblyReference.cache
