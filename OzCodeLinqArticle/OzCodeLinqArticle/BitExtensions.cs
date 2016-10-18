@@ -42,18 +42,17 @@ namespace OzCodeLinqArticle
 
         public static byte ToByte(this IEnumerable<Bit> bits)
         {
-            if (8 < bits.Count())
-            {
-                throw new ArgumentOutOfRangeException(nameof(bits));
-            }
-
-
             int result = 0;
 
             int index = 0;
             foreach (var bit in bits)
             {
                 result = result | (byte)(bit << index++);
+
+                if (index > 8)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(bits));
+                }
             }
 
             return (byte)result;

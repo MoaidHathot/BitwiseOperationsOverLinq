@@ -4,7 +4,7 @@ namespace OzCodeLinqArticle
 {
     public interface IMessageEncoder
     {
-        IEnumerable<KeyValuePair<string, int>> Decode(byte[] bytes);
-        byte[] Encode(IEnumerable<KeyValuePair<string, string>> message);
+        IEnumerable<CommandElement> Decode(byte[] bytes);
+        byte[] Encode(IEnumerable<CommandElement> commandValues);
     }
 }

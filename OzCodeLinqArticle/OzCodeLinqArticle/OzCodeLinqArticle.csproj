@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Bit.cs" />
     <Compile Include="BitExtensions.cs" />
+    <Compile Include="CommandElement.cs" />
     <Compile Include="IMessageEncoder.cs" />
     <Compile Include="MessageEncoder.cs" />
     <Compile Include="LayoutItem.cs" />
