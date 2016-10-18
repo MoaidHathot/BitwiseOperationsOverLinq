@@ -18,7 +18,7 @@ namespace OzCodeLinqArticle
             Index = index;
             BitCount = bitCount;
         }
-
-        public override string ToString() => $"Name: {Name}, Index: {Index}, BitCount: {BitCount}";
     }
 }
+
+//        public override string ToString() => $"Name: {Name}, Index: {Index}, BitCount: {BitCount}";

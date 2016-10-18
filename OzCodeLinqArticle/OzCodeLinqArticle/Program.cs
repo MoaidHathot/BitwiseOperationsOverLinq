@@ -13,7 +13,6 @@ namespace OzCodeLinqArticle
     {
         static void Main(string[] args)
         {
-
             var layout = new[]
             {
                 new LayoutElement("SendAck", 0, 1), //Indicates whether to reply with an acknowledgement or not

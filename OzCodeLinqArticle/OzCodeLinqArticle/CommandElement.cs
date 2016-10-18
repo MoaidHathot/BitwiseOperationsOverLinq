@@ -16,7 +16,7 @@ namespace OzCodeLinqArticle
             Name = name;
             Value = value;
         }
-
-        public override string ToString() => $"Name: {Name}, Value: {Value}";
     }
 }
+
+//public override string ToString() => $"Name: {Name}, Value: {Value}";
