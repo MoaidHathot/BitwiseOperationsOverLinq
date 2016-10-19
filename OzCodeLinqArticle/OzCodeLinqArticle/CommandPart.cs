@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OzCodeLinqArticle
 {
-    public class CommandElement
+    public class CommandPart
     {
         public string Name { get; }
         public int Value { get; }
 
-        public CommandElement(string name, int value)
+        public CommandPart(string name, int value)
         {
             Name = name;
             Value = value;

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace OzCodeLinqArticle
 {
-    public class LayoutElement
+    public class LayoutPart
     {
         public string Name { get; set; }
         public int Index { get; set; }
         public int BitCount { get; set; }
 
-        public LayoutElement(string name, int index, int bitCount)
+        public LayoutPart(string name, int index, int bitCount)
         {
             Name = name;
             Index = index;

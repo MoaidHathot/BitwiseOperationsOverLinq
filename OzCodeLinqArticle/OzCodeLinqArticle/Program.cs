@@ -15,20 +15,20 @@ namespace OzCodeLinqArticle
         {
             var layout = new[]
             {
-                new LayoutElement("SendAck", 0, 1), //Indicates whether to reply with an acknowledgement or not
-                new LayoutElement("CommandId", 1, 5), //The command's id
-                new LayoutElement("SenderId", 2, 4), //The sender's id
-                new LayoutElement("Headers", 3, 6), //Headers about the command and the state
-                new LayoutElement("Content", 4, 8), //Actual content
+                new LayoutPart("SendAck", 0, 1), //Indicates whether to reply with an acknowledgement or not
+                new LayoutPart("CommandId", 1, 5), //The command's id
+                new LayoutPart("SenderId", 2, 4), //The sender's id
+                new LayoutPart("Headers", 3, 6), //Headers about the command and the state
+                new LayoutPart("Content", 4, 8), //Actual content
             };
 
             var command = new[]
             {
-                new CommandElement("SendAck", 1), //Reply with an acknowledgement
-                new CommandElement("CommandId", 0xf), //Command's id
-                new CommandElement("SenderId", 10), //Sender's id
-                new CommandElement("Headers", 0x10), //Predefined headers
-                new CommandElement("Content", 0xff), //predefined content
+                new CommandPart("SendAck", 1), //Reply with an acknowledgement
+                new CommandPart("CommandId", 0xf), //Command's id
+                new CommandPart("SenderId", 10), //Sender's id
+                new CommandPart("Headers", 0x10), //Predefined headers
+                new CommandPart("Content", 0xff), //predefined content
             };
 
             var encoder = new MessageEncoder(layout);
@@ -57,8 +57,8 @@ namespace OzCodeLinqArticle
             var document = XDocument.Load(configuratinPath);
 
             var layout = document.Descendants("Layout")
-                .Descendants("LayoutElement")
-                .Select(item => new LayoutElement(item.Attribute("Name").Value, int.Parse(item.Attribute("Index").Value), int.Parse(item.Attribute("BitCount").Value)));
+                .Descendants("LayoutPart")
+                .Select(item => new LayoutPart(item.Attribute("Name").Value, int.Parse(item.Attribute("Index").Value), int.Parse(item.Attribute("BitCount").Value)));
 
             var messages = document
                 .Descendants("Message")
@@ -76,7 +76,7 @@ namespace OzCodeLinqArticle
 
     class MessageRepository
     {
-        public IEnumerable<LayoutElement> LayoutItems { get; set; }
+        public IEnumerable<LayoutPart> LayoutItems { get; set; }
         public IEnumerable<KeyValuePair<string, string>>[] Messages { get; set; }
     }
 }

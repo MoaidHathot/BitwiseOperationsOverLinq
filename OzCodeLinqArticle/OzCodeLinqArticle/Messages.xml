@@ -2,11 +2,11 @@
 <configuration>
   <Protocol>
     <Layout>
-      <LayoutElement Index="00" BitCount="1" Name="WaitingAck" />
-      <LayoutElement Index="01" BitCount="4" Name="TargetId" />
-      <LayoutElement Index="02" BitCount="4" Name="ActionId" />
-      <LayoutElement Index="03" BitCount="8" Name="Headers" />
-      <LayoutElement Index="04" BitCount="8" Name="Content" />
+      <LayoutPart Index="00" BitCount="1" Name="WaitingAck" />
+      <LayoutPart Index="01" BitCount="4" Name="TargetId" />
+      <LayoutPart Index="02" BitCount="4" Name="ActionId" />
+      <LayoutPart Index="03" BitCount="8" Name="Headers" />
+      <LayoutPart Index="04" BitCount="8" Name="Content" />
     </Layout>
 
     <Messages>

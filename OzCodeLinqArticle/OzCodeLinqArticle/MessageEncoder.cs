@@ -10,14 +10,14 @@ namespace OzCodeLinqArticle
 {
     public class MessageEncoder : IMessageEncoder
     {
-        private readonly IEnumerable<LayoutElement> _layout;
+        private readonly IEnumerable<LayoutPart> _layout;
 
-        public MessageEncoder(IEnumerable<LayoutElement> messageSections)
+        public MessageEncoder(IEnumerable<LayoutPart> messageSections)
         {
             _layout = messageSections.OrderBy(section => section.Index).ToArray();
         }
 
-        public byte[] Encode(IEnumerable<CommandElement> commandValues)
+        public byte[] Encode(IEnumerable<CommandPart> commandValues)
         {
             var valueMap = commandValues.ToDictionary(element => element.Name, element => element.Value);
 
@@ -68,7 +68,7 @@ namespace OzCodeLinqArticle
             //throw new NotImplementedException();
         }
 
-        public IEnumerable<CommandElement> Decode(byte[] bytes)
+        public IEnumerable<CommandPart> Decode(byte[] bytes)
         {
             var bits = bytes.ToBits();
 
@@ -84,7 +84,7 @@ namespace OzCodeLinqArticle
 
                 bits = bits.Skip(layoutElement.BitCount);
 
-                return new CommandElement(layoutElement.Name, BitConverter.ToInt32(slice, 0));
+                return new CommandPart(layoutElement.Name, BitConverter.ToInt32(slice, 0));
             });
         }
 
