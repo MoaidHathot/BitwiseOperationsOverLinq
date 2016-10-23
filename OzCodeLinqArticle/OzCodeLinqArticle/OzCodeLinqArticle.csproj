@@ -49,11 +49,11 @@
   <ItemGroup>
     <Compile Include="Bit.cs" />
     <Compile Include="BitExtensions.cs" />
-    <Compile Include="CommandPart.cs" />
+    <Compile Include="MessagePart.cs" />
     <Compile Include="IFpgaAccess.cs" />
-    <Compile Include="IMessageEncoder.cs" />
-    <Compile Include="MessageEncoder.cs" />
-    <Compile Include="LayoutItem.cs" />
+    <Compile Include="IMessageSerializer.cs" />
+    <Compile Include="MessageSerializer.cs" />
+    <Compile Include="LayoutIPart.cs" />
     <Compile Include="NumberFormattingExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

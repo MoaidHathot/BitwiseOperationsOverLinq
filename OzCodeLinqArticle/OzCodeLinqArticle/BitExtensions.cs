@@ -17,7 +17,7 @@ namespace OzCodeLinqArticle
             }
         }
 
-        public static IEnumerable<Bit> ToBits(this byte[] bytes) => bytes.SelectMany(@byte => @byte.ToBits());
+        public static IEnumerable<Bit> ToBits(this byte[] bytes) => bytes.SelectMany(ToBits);
 
         public static IEnumerable<Bit> PadToFit(this IEnumerable<Bit> bits, Bit bitPadValue, int bitCount) => bits.Concat(Enumerable.Repeat(bitPadValue, bitCount)).Take(bitCount);
 
@@ -58,10 +58,10 @@ namespace OzCodeLinqArticle
             return (byte)result;
         }
 
-        public static IEnumerable<byte> ToBytes(this IEnumerable<IEnumerable<Bit>> bits)
-        {
-            return bits.Select(b => b.ToByte());
-        }
+        public static IEnumerable<byte> ToBytes(this IEnumerable<IEnumerable<Bit>> bits) => bits.Select(ToByte);
+        //{
+        //    return bits.Select(b => b.ToByte());
+        //}
 
         public static byte[] ToByteArray(this string value) => value.IsHexNumber() ? value.HexToByteArray() : value.IntegerToByteArray();
         //{

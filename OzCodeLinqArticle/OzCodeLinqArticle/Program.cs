@@ -15,36 +15,24 @@ namespace OzCodeLinqArticle
         {
             var layout = new[]
             {
-                new LayoutPart("SendAck", 0, 1), //Indicates whether to reply with an acknowledgement or not
-                new LayoutPart("CommandId", 1, 5), //The command's id
-                new LayoutPart("SenderId", 2, 4), //The sender's id
-                new LayoutPart("Headers", 3, 6), //Headers about the command and the state
-                new LayoutPart("Content", 4, 8), //Actual content
+                new LayoutPart("Part 0", 0, 3),
+                new LayoutPart("Part 1", 1, 4),
+                new LayoutPart("Part 2", 2, 11),
             };
 
-            var command = new[]
+            var message = new[]
             {
-                new CommandPart("SendAck", 1), //Reply with an acknowledgement
-                new CommandPart("CommandId", 0xf), //Command's id
-                new CommandPart("SenderId", 10), //Sender's id
-                new CommandPart("Headers", 0x10), //Predefined headers
-                new CommandPart("Content", 0xff), //predefined content
+                new MessagePart("Part 0", 1),
+                new MessagePart("Part 1", 0xA),
+                new MessagePart("Part 2", 0x1F0),
             };
 
-            var encoder = new MessageEncoder(layout);
+            var serializer = new MessageSerializer();
 
-            var encodedBytes = encoder.Encode(command);
-            var decodedBytes = encoder.Decode(encodedBytes);
-            //var configuration = ReadMessageConfiguration("Messages.xml");
+            var serializedBytes = serializer.Serialize(layout, message);
+            var deserializedBytes = serializer.Deserialize(layout, serializedBytes);
 
-            //var encoder = new MessageEncoder(configuration.LayoutItems);
-
-            //var encodedMessage = encoder.Encode(configuration.Messages[0]);
-            //Console.WriteLine(encodedMessage.ToHexNumber());
-            //Console.WriteLine(encodedMessage.ToBits().Reverse().Select(b => b.ToString()).Aggregate((a, b) => $"{a}{b}"));
-            //var decodedMessage = encoder.Decode(encodedMessage);
-
-            var converted = BitConverter.ToString(encodedBytes).Replace("-", "");
+            var converted = BitConverter.ToString(serializedBytes).Replace("-", "");
             Console.WriteLine(converted);
 
             Console.WriteLine("Press enter to quit.");

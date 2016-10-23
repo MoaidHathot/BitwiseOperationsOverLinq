@@ -8,7 +8,7 @@ namespace OzCodeLinqArticle
 {
     public interface IFpgaAccess
     {
-        Task Send(IEnumerable<CommandPart> command);
-        Task<IEnumerable<CommandPart>> Receive();
+        Task Send(IEnumerable<MessagePart> command);
+        Task<IEnumerable<MessagePart>> Receive();
     }
 }
