@@ -50,7 +50,6 @@
     <Compile Include="Bit.cs" />
     <Compile Include="BitExtensions.cs" />
     <Compile Include="MessagePart.cs" />
-    <Compile Include="IFpgaAccess.cs" />
     <Compile Include="IMessageSerializer.cs" />
     <Compile Include="MessageSerializer.cs" />
     <Compile Include="LayoutIPart.cs" />
@@ -61,11 +60,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Messages.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

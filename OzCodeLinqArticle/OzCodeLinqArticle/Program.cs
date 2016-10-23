@@ -39,32 +39,5 @@ namespace OzCodeLinqArticle
             Console.ReadLine();
 
         }
-
-        static MessageRepository ReadMessageConfiguration(string configuratinPath)
-        {
-            var document = XDocument.Load(configuratinPath);
-
-            var layout = document.Descendants("Layout")
-                .Descendants("LayoutPart")
-                .Select(item => new LayoutPart(item.Attribute("Name").Value, int.Parse(item.Attribute("Index").Value), int.Parse(item.Attribute("BitCount").Value)));
-
-            var messages = document
-                .Descendants("Message")
-                .Select(msg =>  msg.Attributes()
-                .Select(attribute => new KeyValuePair<string, string>(attribute.Name.ToString(), attribute.Value)).ToArray())
-                .ToArray();
-
-            return new MessageRepository()
-            {
-                LayoutItems = layout,
-                Messages = messages
-            };
-        }
-    }
-
-    class MessageRepository
-    {
-        public IEnumerable<LayoutPart> LayoutItems { get; set; }
-        public IEnumerable<KeyValuePair<string, string>>[] Messages { get; set; }
     }
 }
