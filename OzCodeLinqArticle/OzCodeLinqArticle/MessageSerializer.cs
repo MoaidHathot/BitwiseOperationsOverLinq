@@ -10,17 +10,14 @@ namespace OzCodeLinqArticle
 {
     public class MessageSerializer : IMessageSerializer
     {
-        public byte[] Serialize(IEnumerable<LayoutPart> layout, IEnumerable<MessagePart> messageParts)
+        public byte[] Serialize(IEnumerable<MessagePart> messageParts)
         {
-            var partsMap = messageParts.ToDictionary(part => part.Name, part => part.Value);
-
-            return layout.OrderBy(part => part.Index).Select(part =>
-                    new { Part = part, Value = partsMap[part.Name] })
-                .SelectMany(pair =>
-                    BitConverter.GetBytes(pair.Value)
+            return messageParts.OrderBy(part => part.Index)
+                .SelectMany(part => 
+                    BitConverter.GetBytes(part.Value)
                     .ToBits()
-                    .Pad(pair.Part.BitCount, Bit.Off)
-                    .Take(pair.Part.BitCount))
+                    .Pad(part.BitCount, Bit.Off)
+                    .Take(part.BitCount))
                 .Batch(8)
                 .Select(slice => slice.ToByte())
                 .ToArray();
@@ -37,14 +34,14 @@ namespace OzCodeLinqArticle
                         .Take(part.BitCount)
                         .Batch(8)
                         .ToBytes()
-                        .Pad(sizeof(int), (byte) 0)
+                        .Pad(sizeof(int), (byte)0)
                         .Take(sizeof(int))
                 .ToArray()
                 .ToInt();
 
                 bits = bits.Skip(part.BitCount);
 
-                return new MessagePart(part.Name, slice);
+                return new MessagePart(part.Name, part.Index, part.BitCount, slice);
 
             }).ToArray();
         }

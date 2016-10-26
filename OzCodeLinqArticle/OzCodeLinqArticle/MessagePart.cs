@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace OzCodeLinqArticle
 {
-    public class MessagePart
+    public class MessagePart : LayoutPart
     {
-        public string Name { get; }
         public int Value { get; }
 
-        public MessagePart(string name, int value)
+        public MessagePart(string name, int index, int bitCount, int value)
+            : base(name, index, bitCount)
         {
-            Name = name;
             Value = value;
         }
     }
 }
-
-//public override string ToString() => $"Name: {Name}, Value: {Value}";

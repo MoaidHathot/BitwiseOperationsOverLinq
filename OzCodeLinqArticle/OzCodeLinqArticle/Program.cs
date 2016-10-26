@@ -22,14 +22,14 @@ namespace OzCodeLinqArticle
 
             var message = new[]
             {
-                new MessagePart("Part 0", 1),
-                new MessagePart("Part 1", 0xA),
-                new MessagePart("Part 2", 0x1F0),
+                new MessagePart("Part 0", 0, 3, 1),
+                new MessagePart("Part 1", 1, 4, 0xA),
+                new MessagePart("Part 2", 2, 11, 0x1F0),
             };
 
             var serializer = new MessageSerializer();
 
-            var serializedBytes = serializer.Serialize(layout, message);
+            var serializedBytes = serializer.Serialize(message);
             var deserializedBytes = serializer.Deserialize(layout, serializedBytes);
 
             var converted = BitConverter.ToString(serializedBytes).Replace("-", "");
