@@ -17,7 +17,11 @@ namespace OzCodeLinqArticle
             }
         }
 
-        public static IEnumerable<Bit> ToBits(this byte[] bytes) => bytes.SelectMany(ToBits);
+        //public static IEnumerable<Bit> ToBits(this byte[] bytes) => bytes.SelectMany(ToBits);
+        public static IEnumerable<Bit> ToBits(this IEnumerable<byte> bytes) => bytes.SelectMany(ToBits);
+
+        public static IEnumerable<byte> ToBytes(this int value) => BitConverter.GetBytes(value);
+
 
         public static IEnumerable<Bit> PadToFit(this IEnumerable<Bit> bits, Bit bitPadValue, int bitCount) => bits.Concat(Enumerable.Repeat(bitPadValue, bitCount)).Take(bitCount);
 

@@ -13,7 +13,7 @@ namespace OzCodeLinqArticle
         public byte[] Serialize(IEnumerable<MessagePart> messageParts)
         {
             return messageParts.OrderBy(part => part.Index)
-                .SelectMany(part => 
+                .SelectMany(part =>  
                     BitConverter.GetBytes(part.Value)
                     .ToBits()
                     .Pad(part.BitCount, Bit.Off)
